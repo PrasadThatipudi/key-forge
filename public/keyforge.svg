@@ -1,0 +1,10 @@
+<svg width="512" height="512" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="100" rx="18" fill="#05060B" />
+  <text x="50" y="45" font-size="48" font-family="Inter, 'Segoe UI', sans-serif" font-weight="700" text-anchor="middle" fill="#F8FAFC">
+    K
+  </text>
+  <text x="50" y="72" font-size="14" letter-spacing="4" font-family="Inter, 'Segoe UI', sans-serif" font-weight="600" text-anchor="middle" fill="#F8FAFC">
+    FORGE
+  </text>
+</svg>
+
