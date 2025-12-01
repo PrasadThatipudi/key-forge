@@ -1,0 +1,12 @@
+node_modules
+dist
+.git
+.gitignore
+Dockerfile
+README.md
+pnpm-lock.yaml
+yarn.lock
+npm-debug.log*
+.npmrc
+.DS_Store
+
