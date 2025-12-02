@@ -51,6 +51,70 @@
   font-size: 1rem;
 }
 
+.row-indicator {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin-top: 0.5rem;
+  align-items: center;
+  color: rgba(226, 232, 240, 0.9);
+}
+
+.row-indicator__pill {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.9rem;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  min-width: 140px;
+}
+
+.row-indicator__label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(226, 232, 240, 0.7);
+}
+
+.row-indicator__value {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.row-indicator__next {
+  font-size: 0.85rem;
+  color: rgba(226, 232, 240, 0.8);
+}
+
+.mode-toggle {
+  display: inline-flex;
+  margin-top: 0.6rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  gap: 0.25rem;
+}
+
+.mode-toggle__button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  background: transparent;
+  color: rgba(248, 250, 252, 0.8);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.mode-toggle__button--active {
+  background: rgba(248, 250, 252, 0.18);
+  color: #f8fafc;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
 .practice-card {
   position: relative;
   max-width: 1700px;
