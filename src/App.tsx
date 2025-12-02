@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from 'react'
-import { getParagraph, getRandomParagraphIndex } from './data/paragraphs'
+import { generateParagraph } from './data/paragraphs'
 import './App.css'
 
 type CharState = 'pending' | 'current' | 'correct' | 'incorrect'
@@ -7,8 +7,8 @@ type CharState = 'pending' | 'current' | 'correct' | 'incorrect'
 const formatNumber = (value: number) => Math.max(0, Math.round(value * 10) / 10)
 
 function App() {
-  const [paragraphIndex, setParagraphIndex] = useState(() => getRandomParagraphIndex(null))
-  const paragraph = getParagraph(paragraphIndex)
+  const [paragraphData, setParagraphData] = useState(() => generateParagraph())
+  const paragraph = paragraphData.text
 
   const [typed, setTyped] = useState('')
   const [startTime, setStartTime] = useState<number | null>(null)
@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     typingRef.current?.focus()
-  }, [paragraphIndex])
+  }, [paragraphData.seed])
 
   useEffect(() => {
     if (!startTime || (isComplete && endTime)) {
@@ -70,7 +70,7 @@ function App() {
     setStartTime(null)
     setEndTime(null)
     setNow(Date.now())
-    setParagraphIndex((prev) => getRandomParagraphIndex(prev))
+    setParagraphData((prev) => generateParagraph(prev.seed))
   }, [])
 
   const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -88,9 +88,7 @@ function App() {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.metaKey && event.key === 'Enter') {
       event.preventDefault()
-      if (isComplete) {
-        resetSession()
-      }
+      resetSession()
     }
     if (event.key === 'Tab') {
       event.preventDefault()
@@ -99,7 +97,7 @@ function App() {
 
   useEffect(() => {
     const handleGlobalShortcut = (event: KeyboardEvent) => {
-      if (event.metaKey && event.key === 'Enter' && isComplete) {
+      if (event.metaKey && event.key === 'Enter') {
         event.preventDefault()
         resetSession()
       }
@@ -107,7 +105,7 @@ function App() {
 
     window.addEventListener('keydown', handleGlobalShortcut)
     return () => window.removeEventListener('keydown', handleGlobalShortcut)
-  }, [isComplete, resetSession])
+  }, [resetSession])
 
   return (
     <div className="page" onClick={() => typingRef.current?.focus()}>

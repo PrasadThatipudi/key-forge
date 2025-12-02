@@ -1,3 +1,5 @@
+import { generateParagraph } from './generator'
+
 const PARAGRAPHS = [
   'Swift thumbs paint zigzag stories across the screen, mixing jazz, trivia, and quirky punctuation like ?! and @ in one breath.',
   'Pack my box with five dozen liquor jugs; then toss in 7 quartz crystals, 3 brass keys, and a splash of midnight ink.',
@@ -28,4 +30,6 @@ export const getRandomParagraphIndex = (previousIndex: number | null) => {
 export const getParagraph = (index: number) => PARAGRAPHS[index]
 
 export const paragraphCount = PARAGRAPHS.length
+
+export { generateParagraph }
 
